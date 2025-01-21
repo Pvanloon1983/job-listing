@@ -14,7 +14,7 @@
     <div class="px-10">
         <nav class="flex justify-between items-center py-4 border-b border-white/10">
             <div>
-                <a href="">
+                <a href="/">
                     <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="Logo">
                 </a>
             </div>
@@ -24,9 +24,24 @@
                 <a href="#">Salaries</a>
                 <a href="#">Companies</a>
             </div>
+
+            @auth
             <div>
-                <a href="#">Post a Job</a>
+                <a href="/jobs/create">Post a Job</a>
+                <form action="/logout" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Logout</button>
+                </form>
             </div>
+            @endauth
+
+            @guest
+            <div class="space-x-6 font-bold">
+                <a href="/register">Sign Up</a>
+                <a href="/login">Login</a>
+            </div>
+            @endguest
         </nav>
 
         <main class="mt-10 max-w-[986px] mx-auto">

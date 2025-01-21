@@ -18,9 +18,9 @@ class EmployerFactory extends Factory
     public function definition(): array
     {
         return [
-           'name' => fake()->name(),
-           'logo' => fake()->imageUrl(),
-           'user_id' => User::factory()
+            'name' => fake()->name(),
+            'logo' => 'https://picsum.photos/90/90?random=' . rand(1, 10000), 
+            'user_id' => User::factory(),
         ];
     }
 }

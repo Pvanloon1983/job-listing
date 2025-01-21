@@ -1,3 +1,9 @@
-@props(['width' => 90])
+@props(['employer', 'width' => 90])
 
-<img class="rounded-xl" src="https://picsum.photos/seed/{{ rand(0, 100000) }}/{{ $width }}" alt="">
+@if (str_contains($employer->logo, 'http'))
+    <img class="rounded-xl" src="{{ $employer->logo }}" alt="" width="{{ $width }}">
+@else
+    <img class="rounded-xl" src="{{ asset('storage/' . $employer->logo) }}" alt="" width="{{ $width }}">
+@endif
+
+
